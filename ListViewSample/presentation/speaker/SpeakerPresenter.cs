@@ -20,18 +20,21 @@ namespace ListViewSample.presentation.speaker
         public override void Start()
         {
             // ロードボタン押下
-            this.view.LoadButtonClicks()
-                .Subscribe( _ => {
-                    this.getSpeakerListUseCase.Execute(Unit.Default)
+            this.disposables.Add(this.view.LoadButtonClicks()
+                .Subscribe(_ =>
+                {
+                    this.disposables.Add(this.getSpeakerListUseCase.Execute(Unit.Default)
                         .ObserveOn(SynchronizationContext.Current)
-                        .Subscribe(list => {
+                        .Subscribe(list =>
+                        {
                             var viewEntities = new SpeakerListViewEntityMapper().Transform(list);
                             this.view.UpdateView(viewEntities);
-                        }, error => {
+                        }, error =>
+                        {
                             Trace.WriteLine(error);
-                            this.view.ShowErrorDialog("エラー", "取得に失敗しました。", () => { Trace.WriteLine("OK押下"); });
-                        });
-                });
-        }
+                            this.view.ShowErrorDialog("エラー", "取得に失敗しました。", () => { });
+                        }));
+                }));
+        } 
     }
 }
