@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<src:BasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:src="clr-namespace:ListViewSample.presentation.base;assembly=BasePage" x:Class="ListViewSample.presentation.speaker.SpeakerListPage">
+<!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ListViewSample.presentation.speaker.SpeakerListPage">-->
+    <StackLayout>
+        <Button Text="Load Speaker List" VerticalOptions="Start" x:Name="loadButton" />
+        <ListView x:Name="speakerListView" VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell Text="{Binding Name}"
+                        Detail="{Binding Title}"
+                        ImageSource="{Binding AvatarUrl}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</src:BasePage>
