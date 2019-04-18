@@ -21,14 +21,16 @@ namespace ListViewSample.presentation.speaker
         {
             // ロードボタン押下
             this.disposables.Add(this.view.LoadButtonClicks()
+                .Do(_ => this.view.UpdateActivityIndicator(true))
                 .Subscribe(_ =>
                 {
                     this.disposables.Add(this.getSpeakerListUseCase.Execute(Unit.Default)
                         .ObserveOn(SynchronizationContext.Current)
+                        .Finally(() => this.view.UpdateActivityIndicator(false))
                         .Subscribe(list =>
                         {
                             var viewEntities = new SpeakerListViewEntityMapper().Transform(list);
-                            this.view.UpdateView(viewEntities);
+                            this.view.UpdateSpeakerListView(viewEntities);
                         }, error =>
                         {
                             Trace.WriteLine(error);

@@ -5,6 +5,8 @@ namespace ListViewSample
 {
     public partial class App : Application
     {
+        public static double StatusBarHeight { get; set; } = 0.0;
+
         public App()
         {
             InitializeComponent();

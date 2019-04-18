@@ -18,12 +18,18 @@ namespace ListViewSample.presentation.speaker
             this.presenter.Start();
         }
 
-        ~SpeakerListPage()
+        protected override void OnDisappearing()
         {
+            base.OnDisappearing();
             this.presenter.Destroy();
         }
 
-        public void UpdateView(IList<SpeakerListViewEntity> entities)
+        public void UpdateActivityIndicator(bool shows)
+        {
+            this.activityIndicator.IsRunning = shows;
+        }
+
+        public void UpdateSpeakerListView(IList<SpeakerListViewEntity> entities)
         {
             this.speakerListView.ItemsSource = entities;
         }

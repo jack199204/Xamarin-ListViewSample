@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <src:BasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:src="clr-namespace:ListViewSample.presentation.base;assembly=BasePage" x:Class="ListViewSample.presentation.speaker.SpeakerListPage">
-<!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ListViewSample.presentation.speaker.SpeakerListPage">-->
-    <StackLayout>
-        <Button Text="Load Speaker List" VerticalOptions="Start" x:Name="loadButton" />
-        <ListView x:Name="speakerListView" VerticalOptions="FillAndExpand">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ImageCell Text="{Binding Name}"
+    <AbsoluteLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <Button Grid.Row="0" Grid.Column="0" Text="Load Speaker List" x:Name="loadButton" />
+            <ListView Grid.Row="1" Grid.Column="0" x:Name="speakerListView" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Name}"
                         Detail="{Binding Title}"
                         ImageSource="{Binding AvatarUrl}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+        <ActivityIndicator x:Name="activityIndicator" IsRunning="false"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"/>
+    </AbsoluteLayout>
 </src:BasePage>

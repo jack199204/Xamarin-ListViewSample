@@ -8,13 +8,24 @@ namespace ListViewSample.presentation.@base
     {
         protected readonly UseCaseProvider useCaseProvider = new ProviderFactory().CreateUseCaseProvider();
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // iOS のみステータスバーの高さ分ずらす
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                this.Padding = new Thickness(0.0, App.StatusBarHeight, 0.0, 0.0);
+            }
+        }
+
         public void ShowErrorDialog(string title, string message, Action callback)
         {
-            Action alert = async () => 
+            async void alert()
             {
                 await DisplayAlert(title, message, "OK");
                 callback();
-            };
+            }
             alert();
         }
     }

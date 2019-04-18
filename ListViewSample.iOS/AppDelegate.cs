@@ -25,6 +25,8 @@ namespace ListViewSample.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
+            App.StatusBarHeight = UIApplication.SharedApplication.StatusBarFrame.Height;
+
             return base.FinishedLaunching(app, options);
         }
     }
