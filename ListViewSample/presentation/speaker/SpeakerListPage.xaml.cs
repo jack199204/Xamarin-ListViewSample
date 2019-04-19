@@ -34,9 +34,9 @@ namespace ListViewSample.presentation.speaker
             this.speakerListView.ItemsSource = entities;
         }
 
-        public IObservable<EventPattern<object>> LoadButtonClicks()
+        public IObservable<Unit> LoadButtonClicks()
         {
-            return Observable.FromEventPattern(this.loadButton, "Clicked");
+            return Observable.FromEventPattern(this.loadButton, "Clicked").Select(_ => Unit.Default);
         }
     }
 }

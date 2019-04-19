@@ -11,6 +11,6 @@ namespace ListViewSample.presentation.speaker
 
         void UpdateSpeakerListView(IList<SpeakerListViewEntity> entity);
 
-        IObservable<EventPattern<object>> LoadButtonClicks();
+        IObservable<Unit> LoadButtonClicks();
     }
 }
