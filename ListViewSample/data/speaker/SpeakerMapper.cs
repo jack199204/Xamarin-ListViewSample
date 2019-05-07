@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 using ListViewSample.domain.speaker;
 
 namespace ListViewSample.data.speaker
@@ -7,13 +8,7 @@ namespace ListViewSample.data.speaker
     {
         public IList<Speaker> Transform(IList<SpeakerResponseEntity> entities)
         {
-            var speakerList = new List<Speaker>();
-            foreach (SpeakerResponseEntity entity in entities)
-            {
-                speakerList.Add(new Speaker(entity.Name, entity.Description, entity.Avatar));
-            }
-
-            return speakerList;
+            return entities.Select(entity => new Speaker(entity.Name, entity.Title, entity.Avatar)).ToList();
         }
     }
 }
