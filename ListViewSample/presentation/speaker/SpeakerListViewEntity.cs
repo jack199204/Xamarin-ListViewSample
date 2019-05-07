@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 namespace ListViewSample.presentation.speaker
 {
     public class SpeakerListViewEntity

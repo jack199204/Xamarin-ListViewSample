@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Reactive;
 using System.Reactive.Linq;
 using Newtonsoft.Json;
-using ListViewSample.domain.speaker;
 
 namespace ListViewSample.data.speaker
 {
